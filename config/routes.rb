@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
   resources :channels, only: [:index, :new, :create, :show]
+  resources :messages, only: [:create]
 
   root "channels#index"
 end

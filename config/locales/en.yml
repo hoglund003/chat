@@ -10,3 +10,7 @@ en:
     channel_name: "Channel name"
     create_channel: "Create channel"
 
+  message:
+    object: "Message"
+    send_a_message: "Send a message"
+    send: "Send"

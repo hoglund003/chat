@@ -9,3 +9,11 @@
     </div>
   <% end %>
 </div>
+
+<%= form_with model: @message do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :channel_id, value: @channel.id %>
+
+  <%= f.text_field :text %>
+  <%= f.submit t('message.send'), data: {turbo: false} %>
+<% end %>
