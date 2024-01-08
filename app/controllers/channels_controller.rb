@@ -1,5 +1,7 @@
 class ChannelsController < ApplicationController
-  def index; end
+  def index
+    @channels = Channel.all.order(name: :asc)
+  end
 
   def new
     @channel = Channel.new
