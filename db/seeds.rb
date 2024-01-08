@@ -25,7 +25,7 @@ channel_names.each do |channel_name|
 end
 
 Channel.all.each do |channel|
-  25.times do
+  100.times do
     message = Message.new(
       text: Faker::Lorem.sentence(word_count: 3),
       channel: channel,
