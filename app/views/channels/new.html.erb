@@ -1,0 +1,18 @@
+<%= form_with model: @channel do |f| %>
+
+  <div>
+    <% if @channel.errors.full_messages.any? %>
+      <% @channel.errors.full_messages.each do |error_message| %>
+        <%= error_message %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :name, t('channel.channel_name') %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.submit t('channel.create_channel'), data: {turbo: false} %>
+
+<% end %>
