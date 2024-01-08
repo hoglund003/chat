@@ -18,6 +18,11 @@ class ChannelsController < ApplicationController
     end
   end
 
+  def show
+    @channel = Channel.find(params[:id])
+    @message = Message.new
+  end
+
   private
 
   def channel_params
