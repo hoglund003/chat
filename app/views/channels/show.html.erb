@@ -1,0 +1,11 @@
+<h1>
+  <%= @channel.name %>
+</h1>
+
+<div>
+  <% @channel.messages.each do |message| %>
+    <div>
+      <%= message.text %>
+    </div>
+  <% end %>
+</div>
