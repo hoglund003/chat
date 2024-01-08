@@ -1,4 +1,5 @@
 
+Message.destroy_all
 User.destroy_all
 Channel.destroy_all
 
@@ -21,4 +22,15 @@ channel_names.each do |channel_name|
   )
 
   puts "Channel created!" if channel.save!
+end
+
+Channel.all.each do |channel|
+  25.times do
+    message = Message.new(
+      text: Faker::Lorem.sentence(word_count: 3),
+      channel: channel,
+      user: User.all.sample
+    )
+    puts "Message created!" if message.save!
+  end
 end
