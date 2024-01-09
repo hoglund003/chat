@@ -3,7 +3,7 @@
 </h1>
 <div clas="h-full flex">
     <div class="h-96 overflow-scroll" data-controller="scroll" data-scroll-to-bottom-value="true">
-      <% @channel.messages.each do |message| %>
+      <% @messages.each do |message| %>
         <div>
           <%= message.text %>
         </div>

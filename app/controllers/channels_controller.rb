@@ -20,6 +20,7 @@ class ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find(params[:id])
+    @messages = @channel.messages.order(created_at: :asc)
     @message = Message.new
   end
 
