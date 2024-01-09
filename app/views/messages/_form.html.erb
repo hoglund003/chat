@@ -1,0 +1,5 @@
+<%= form_with model: message, id: "message_form" do |f| %>
+  <%= f.hidden_field :channel_id, value: channel.id %>
+  <%= f.text_field :text %>
+  <%= f.submit t('message.send') %>
+<% end %>

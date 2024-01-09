@@ -1,20 +1,13 @@
 <h1>
   <%= @channel.name %>
 </h1>
-<div clas="h-full flex">
-    <div class="h-96 overflow-scroll" data-controller="scroll" data-scroll-to-bottom-value="true">
-      <% @messages.each do |message| %>
-        <div>
-          <%= message.text %>
-        </div>
-      <% end %>
+<div class="h-full flex flex-col">
+
+    <%= turbo_stream_from :messages %>
+    <div id="messages" class="h-96 overflow-scroll" data-controller="scroll" data-scroll-to-bottom-value="true">
+      <%= render @messages %>
     </div>
 
-    <%= form_with model: @message do |f| %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :channel_id, value: @channel.id %>
+    <%= render "messages/form", message: @message, channel: @channel %>
 
-      <%= f.text_field :text %>
-      <%= f.submit t('message.send'), data: {turbo: false} %>
-    <% end %>
 </div>
