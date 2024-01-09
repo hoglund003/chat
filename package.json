@@ -2,10 +2,25 @@
   "name": "chat",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:hoglund003/chat.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hoglund003/chat.git"
+  },
   "author": "kasper_hoglund <kasper@rubynor.com>",
   "license": "MIT",
   "dependencies": {
     "daisyui": "^4.5.0"
+  },
+  "description": "A \"Slack like\" app built in Ruby on Rails.",
+  "bugs": {
+    "url": "https://github.com/hoglund003/chat/issues"
+  },
+  "homepage": "https://github.com/hoglund003/chat#readme",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
