@@ -1,7 +1,7 @@
 <h1>
   <%= @channel.name %>
 </h1>
-<div clas="h-full flex">
+<div class="h-full flex flex-col">
     <div class="h-96 overflow-scroll" data-controller="scroll" data-scroll-to-bottom-value="true">
       <% @messages.each do |message| %>
         <div>
