@@ -46,10 +46,27 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        light: {
-          ...require("daisyui/src/theming/themes")["light"],
-          primary: "blue",
-          secondary: "teal",
+        myCustomTheme: {
+          primary: "#3990d2",
+          "primary-content": "#ffffff",
+          "primary-focus": "#2875b0",
+          "primary-content-focus": "#63a7db",
+          secondary: "#d24839",
+          "secondary-content": "#ffffff",
+          "secondary-focus": "#b03528",
+          "secondary-content-focus": "#db6e63",
+          background: "#edf0f2",
+          foreground: "#fbfbfc",
+          border: "#dae0e5",
+          copy: "#20272d",
+          "copy-focus": "#546878",
+          "copy-content": "#788fa0",
+          success: "#39d239",
+          warning: "#d2d239",
+          error: "#d23939",
+          "success-content": "#020a02",
+          "warning-content": "#0a0a02",
+          "error-content": "#ffffff"
         },
       },
     ],
