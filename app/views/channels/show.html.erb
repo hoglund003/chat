@@ -1,13 +1,27 @@
-<h1>
-  <%= @channel.name %>
-</h1>
-<div class="h-full flex flex-col">
 
-    <%= turbo_stream_from :messages %>
-    <div id="messages" class="h-96 overflow-scroll" data-controller="scroll" data-scroll-to-bottom-value="true">
-      <%= render @messages %>
+<div class="flex w-full gap-8">
+    <div data-turbo-permanent>
+      <%= turbo_frame_tag "channel_list", target: "_top" do %>
+        <div class="w-full flex flex-col gap-1 h-fit text-primary select-none">
+          <% @channels.each do |channel| %>
+            <!-- TODO: Use helper here -->
+            <%= link_to channel.name, channel, class: "px-3 py-1 rounded-md #{(channel.id == @channel.id) ? "bg-primary text-primary-content" : "hover:bg-background"}" %>
+          <% end %>
+          <%= link_to t('channel.new_channel'), new_channel_path, data: {turbo: false}, class: "px-3 py-1 rounded-md text-secondary hover:bg-background" %>
+        </div>
+      <% end %>
     </div>
+    <div class="w-full">
+        <div class="h-full flex flex-col">
+            <%= turbo_stream_from :messages %>
+            <div id="messages" class="h-96 overflow-scroll mb-3" data-controller="scroll" data-scroll-to-bottom-value="true">
+              <%= render @messages %>
+            </div>
 
-    <%= render "messages/form", message: @message, channel: @channel %>
-
+            <%= render "messages/form", message: @message, channel: @channel %>
+        </div>
+    </div>
 </div>
+
+
+

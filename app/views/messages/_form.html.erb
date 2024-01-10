@@ -1,5 +1,7 @@
 <%= form_with model: message, id: "message_form" do |f| %>
   <%= f.hidden_field :channel_id, value: channel.id %>
-  <%= f.text_field :text %>
-  <%= f.submit t('message.send') %>
+  <div class="w-full flex w-full gap-2">
+    <%= f.text_field :text, class: "input w-full", placeholder: t('message.placeholder', channel_name: @channel.name)  %>
+    <%= f.button t('message.send'), type: "submit", class: "btn btn-secondary" %>
+  </div>
 <% end %>

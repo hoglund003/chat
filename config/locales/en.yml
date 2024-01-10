@@ -14,3 +14,4 @@ en:
     object: "Message"
     send_a_message: "Send a message"
     send: "Send"
+    placeholder: "Message %{channel_name}"

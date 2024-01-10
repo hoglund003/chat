@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "channel_list", class: "w-fit" do %>
+  <ul class="w-full">
+    <% channels.each do |channel| %>
+      <li>
+        <%= link_to channel.name, channel %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
