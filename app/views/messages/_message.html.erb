@@ -1,3 +1,12 @@
-<div class="<%= dom_id(message) %>" data-controller="scroll-into-view">
-  <%= message.text %>
+<div
+  id="<%= dom_id(message) %>"
+  data-controller="scroll-into-view"
+  class="flex flex-col py-2 border-t border-t-copy"
+>
+  <span class="font-bold">
+    <%= message.user.nickname %>
+  </span>
+  <span>
+    <%= message.text %>
+  </span>
 </div>

@@ -1,20 +1,20 @@
 
 <div class="flex w-full gap-8">
-    <sidebar data-turbo-permanent>
+    <div data-turbo-permanent>
       <%= turbo_frame_tag "channel_list", target: "_top" do %>
-        <ul class="w-full">
+        <div class="w-full flex flex-col gap-1 h-fit text-primary select-none">
           <% @channels.each do |channel| %>
-            <li>
-              <%= link_to channel.name, channel, class: "bg-primary text-primary-content rounded-xl" %>
-            </li>
+            <!-- TODO: Use helper here -->
+            <%= link_to channel.name, channel, class: "px-3 py-1 rounded-md #{(channel.id == @channel.id) ? "bg-primary text-primary-content" : "hover:bg-background"}" %>
           <% end %>
-        </ul>
+          <%= link_to t('channel.new_channel'), new_channel_path, data: {turbo: false}, class: "px-3 py-1 rounded-md text-secondary hover:bg-background" %>
+        </div>
       <% end %>
-    </sidebar>
+    </div>
     <div class="w-full">
         <div class="h-full flex flex-col">
             <%= turbo_stream_from :messages %>
-            <div id="messages" class="h-96 overflow-scroll" data-controller="scroll" data-scroll-to-bottom-value="true">
+            <div id="messages" class="h-96 overflow-scroll mb-3" data-controller="scroll" data-scroll-to-bottom-value="true">
               <%= render @messages %>
             </div>
 
@@ -22,4 +22,6 @@
         </div>
     </div>
 </div>
+
+
 

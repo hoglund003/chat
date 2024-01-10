@@ -22,7 +22,7 @@
     <% if [new_user_session_path, new_user_registration_path].include?(request.path) %>
       <%= yield %>
     <% else %>
-      <main class="container mx-auto mt-28 px-5 flex flex-col">
+      <main class="mt-28 px-5 flex flex-col">
         <%= yield %>
       </main>
     <% end %>

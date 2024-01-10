@@ -3,7 +3,6 @@ class ChannelsController < ApplicationController
     @channels = Channel.all.order(name: :asc)
     if turbo_frame_request?
       render partial: "channels/list", locals: {channels: @channels}
-      return
     end
   end
 
@@ -15,7 +14,7 @@ class ChannelsController < ApplicationController
     @channel = Channel.new(channel_params)
     if @channel.save
       flash[:notice] = t('flash.record_created', record: t('channel.object'))
-      redirect_to channels_path
+      redirect_to @channel
     else
       flash.now[:alert] = t('flash.record_not_created', record: t('channel.object'))
       render "new"
