@@ -1,6 +1,10 @@
 class ChannelsController < ApplicationController
   def index
     @channels = Channel.all.order(name: :asc)
+    if turbo_frame_request?
+      render partial: "channels/list", locals: {channels: @channels}
+      return
+    end
   end
 
   def new
@@ -20,6 +24,7 @@ class ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find(params[:id])
+    @channels = Channel.all
     @messages = @channel.messages.order(created_at: :asc)
     @message = Message.new
   end

@@ -1,13 +1,25 @@
-<h1>
-  <%= @channel.name %>
-</h1>
-<div class="h-full flex flex-col">
 
-    <%= turbo_stream_from :messages %>
-    <div id="messages" class="h-96 overflow-scroll" data-controller="scroll" data-scroll-to-bottom-value="true">
-      <%= render @messages %>
+<div class="flex w-full gap-8">
+    <sidebar data-turbo-permanent>
+      <%= turbo_frame_tag "channel_list", target: "_top" do %>
+        <ul class="w-full">
+          <% @channels.each do |channel| %>
+            <li>
+              <%= link_to channel.name, channel, class: "bg-primary text-primary-content rounded-xl" %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </sidebar>
+    <div class="w-full">
+        <div class="h-full flex flex-col">
+            <%= turbo_stream_from :messages %>
+            <div id="messages" class="h-96 overflow-scroll" data-controller="scroll" data-scroll-to-bottom-value="true">
+              <%= render @messages %>
+            </div>
+
+            <%= render "messages/form", message: @message, channel: @channel %>
+        </div>
     </div>
-
-    <%= render "messages/form", message: @message, channel: @channel %>
-
 </div>
+
