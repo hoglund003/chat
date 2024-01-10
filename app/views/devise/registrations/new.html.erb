@@ -1,34 +1,59 @@
-<h2>Sign up</h2>
+<%= render "devise/shared/layout" do %>
+  <%= render "devise/shared/layout_left" do %>
+    <h1 class="text-primary-content text-5xl font-bold">
+      All ready have an account?
+    </h1>
+    <h2 class="text-copy text-3xl font-bold">
+      Get straight to it!
+    </h2>
+    <%= link_to "Login", new_user_session_path, class: "btn btn-secondary btn-md btn-wide text-2xl" %>
+  <% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "devise/shared/layout_middle" do %>
+    <div class="avatar flex justify-center items-center md:h-full">
+      <div class="w-24 rounded-full h-fit">
+        <img src="/chat_logo.png" />
+      </div>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname, autofocus: true, autocomplete: "username" %>
-  </div>
+  <%= render "devise/shared/layout_right" do %>
+    <div class="text-secondary-content max-w-96 flex flex-col gap-4">
+      <h2 class="text-2xl font-bold">Sign up</h2>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+        <div class="font-bold flex flex-col gap-4">
+          <div class="font-bold flex flex-col gap-2">
+            <%= f.label :nickname %><br />
+            <%= f.text_field :nickname, autofocus: true, autocomplete: "username", class: "input text-black" %>
+          </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+          <div class="font-bold flex flex-col gap-2">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input text-black" %>
+          </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+          <div class="font-bold flex flex-col gap-2">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "input text-black" %>
+          </div>
+
+          <div class="font-bold flex flex-col gap-2">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input text-black" %>
+          </div>
+
+          <%= f.submit "Sign up", class: "btn btn-primary btn-md text-lg mt-4" %>
+        </div>
+
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%#= render "devise/shared/links" %>
