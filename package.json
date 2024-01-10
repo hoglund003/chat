@@ -9,7 +9,10 @@
   "author": "kasper_hoglund <kasper@rubynor.com>",
   "license": "MIT",
   "dependencies": {
-    "daisyui": "^4.5.0"
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.0-beta.2",
+    "daisyui": "^4.5.0",
+    "esbuild": "^0.19.11"
   },
   "description": "A \"Slack like\" app built in Ruby on Rails.",
   "bugs": {
@@ -19,8 +22,8 @@
   "directories": {
     "lib": "lib"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
   }
 }
