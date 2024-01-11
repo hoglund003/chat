@@ -1,0 +1,12 @@
+<% if @pagy.next %>
+  <%= turbo_frame_tag(
+      "message-page-#{@pagy.next}",
+      src: pagy_url_for(@pagy, @pagy.next),
+      loading: "lazy",
+      target: "_top",
+  ) do %>
+    <span class="text-center">
+      <%= t('message.loading_messages') %>
+    </span>
+  <% end %>
+<% end %>

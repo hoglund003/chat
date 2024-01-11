@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "message-page-#{@pagy.page}" do %>
+  <%= render partial: "messages/next_page" if @pagy.next.present? %>
+  <%= render @messages %>
+<% end %>
