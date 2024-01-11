@@ -15,7 +15,6 @@ Channel.destroy_all
 end
 
 channel_names = %w[general specific announcements news random]
-
 channel_names.each do |channel_name|
   channel = Channel.new(
     name: channel_name
@@ -26,10 +25,12 @@ end
 
 Channel.all.each do |channel|
   100.times do
+    date = rand((4.months.ago)..(0.days.ago))
     message = Message.new(
       text: Faker::Lorem.sentence(word_count: 3),
       channel: channel,
-      user: User.all.sample
+      user: User.all.sample,
+      created_at: date,
     )
     puts "Message created!" if message.save!
   end
