@@ -1,0 +1,18 @@
+<% if notice || alert %>
+  <div class="toast toast-top toast-start">
+    <% if notice %>
+      <div class="alert alert-success" data-controller="remove" data-remove-time-out-value="2500">
+        <span>
+          <%= notice %>
+        </span>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-error" data-controller="remove" data-remove-time-out-value="2500">
+        <span>
+          <%= alert %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -13,14 +13,11 @@
   </head>
 
   <body>
-  <% if notice %>
-    <p class="notice"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert"><%= alert %></p>
-  <% end %>
-    <% if [new_user_session_path, new_user_registration_path].include?(request.path) %>
-      <%= yield %>
+    <%= render partial: "layouts/flash" %>
+    <% if [new_user_session_path, new_user_registration_path, user_registration_path].include?(request.path) %>
+      <main>
+        <%= yield %>
+      </main>
     <% else %>
       <main class="mt-28 px-5 flex flex-col">
         <%= yield %>
