@@ -6,9 +6,12 @@
         <span>
             <%= channel.name %>
         </span>
-        <span class="ml-auto">
-            <%= notifications_count(current_user, channel) %>
-        </span>
+        <% count = notifications_count(current_user, channel) %>
+        <% if count %>
+          <span class="badge p-2 ml-auto text-secondary-content bg-secondary">
+              <%= count %>
+          </span>
+        <% end %>
       </span>
     <% end %>
   <% end %>
