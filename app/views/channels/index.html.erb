@@ -1,5 +1,0 @@
-<%= link_to t('channel.new_channel'), new_channel_path, data: {turbo: false} %>
-
-<% @channels.each do |channel| %>
-  <%= link_to channel.name, channel %>
-<% end %>
