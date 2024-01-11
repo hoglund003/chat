@@ -14,10 +14,14 @@
     <div class="w-full">
         <div class="h-full flex flex-col">
             <%= turbo_stream_from :messages %>
-            <div id="messages" class="h-96 overflow-scroll mb-3" data-controller="scroll" data-scroll-to-bottom-value="true">
-              <%= render @messages %>
+            <div class="h-96 overflow-scroll mb-3 flex flex-col-reverse">
+              <div id="messages">
+                <%= render @messages %>
+              </div>
+              <div id="next_link">
+                <%= render partial: "messages/next_page" %>
+              </div>
             </div>
-
             <%= render "messages/form", message: @message, channel: @channel %>
         </div>
     </div>

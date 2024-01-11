@@ -24,8 +24,11 @@ class ChannelsController < ApplicationController
   def show
     @channel = Channel.find(params[:id])
     @channels = Channel.all
-    @messages = @channel.messages.order(created_at: :asc)
     @message = Message.new
+    @pagy, @messages = pagy_countless(@channel.messages.order(created_at: :desc), items: 12)
+    @messages = @messages.reverse
+
+    render "messages/scroll_list" if params[:page]
   end
 
   private
