@@ -11,6 +11,9 @@ class ChannelsController < ApplicationController
     else
       flash[:alert] = t('flash.record_not_created', record: t('channel.object'))
       @channel = Channel.first
+      # TODO: Refactor to method
+      @pagy, @messages = pagy_countless(@channel.messages.order(created_at: :desc), items: 12)
+      @messages = @messages.reverse
       render "show", status: :unprocessable_entity
     end
   end
