@@ -10,5 +10,5 @@ application.register("hello", HelloController)
 import ScrollController from "./scroll_controller"
 application.register("scroll", ScrollController)
 
-import ScrollIntoViewController from "./scroll_into_view_controller"
-application.register("scroll-into-view", ScrollIntoViewController)
+import ValidationController from "./validation_controller"
+application.register("validation", ValidationController)

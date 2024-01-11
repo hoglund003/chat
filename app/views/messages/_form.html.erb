@@ -1,7 +1,7 @@
-<%= form_with model: Message.new, id: "message_form" do |f| %>
+<%= form_with model: Message.new, id: "message_form", data: { controller: :validation, action: "validation#submit" }, html: { autocomplete: "off" } do |f| %>
   <%= f.hidden_field :channel_id, value: channel.id %>
   <div class="w-full flex w-full gap-2">
-    <%= f.text_field :text, class: "input w-full", placeholder: t('message.placeholder', channel_name: channel.name)  %>
-    <%= f.button t('message.send'), type: "submit", class: "btn btn-secondary", autocomplete: "off" %>
+    <%= f.text_field :text, class: "input w-full", placeholder: t('message.placeholder', channel_name: channel.name), data: { validation_target: "requiredField", action: "validation#checkDataIsValid" }  %>
+    <%= f.button t('message.send'), type: "submit", class: "btn btn-secondary btn-disabled", data: { validation_target: "submit" } %>
   </div>
 <% end %>
