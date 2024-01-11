@@ -26,7 +26,13 @@ class ChannelsController < ApplicationController
     @pagy, @messages = pagy_countless(@channel.messages.order(created_at: :desc), items: 12)
     @messages = @messages.reverse
 
+    clear_notifications
+
     render "messages/scroll_list" if params[:page]
+  end
+
+  def clear_notifications
+    @channel.unread_notifications.where(user: current_user).destroy_all
   end
 
   private

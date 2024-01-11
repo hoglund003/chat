@@ -4,6 +4,8 @@ class MessagesController < ApplicationController
     @channel = @message.channel
     respond_to do |format|
       if @message.save
+        set_notifications
+
         @message = Message.new
         format.turbo_stream {
           render turbo_stream: turbo_stream.replace(
@@ -14,6 +16,11 @@ class MessagesController < ApplicationController
         }
       end
     end
+  end
+
+  def set_notifications
+    all_users_except_current = User.where.not(id: current_user.id)
+    all_users_except_current.each { |user| UnreadNotification.create(user: user, message: @message) }
   end
 
   private
