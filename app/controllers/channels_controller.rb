@@ -7,7 +7,6 @@ class ChannelsController < ApplicationController
     @channels = Channel.all
     @channel = Channel.new(channel_params)
     if @channel.save
-      handle_notifications
       redirect_to @channel
     else
       flash[:alert] = t('flash.record_not_created', record: t('channel.object'))
@@ -27,12 +26,13 @@ class ChannelsController < ApplicationController
     @pagy, @messages = pagy_countless(@channel.messages.order(created_at: :desc), items: 12)
     @messages = @messages.reverse
 
+    clear_notifications
+
     render "messages/scroll_list" if params[:page]
   end
 
-  def handle_notifications
-    all_users_except_current = User.where.not(id: current_user.id)
-    all_users_except_current.each { |user| user.unread_notifications.append(message: self) }
+  def clear_notifications
+    @channel.unread_notifications.where(user: current_user).destroy_all
   end
 
   private

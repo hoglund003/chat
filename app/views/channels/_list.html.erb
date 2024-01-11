@@ -1,7 +1,16 @@
 <div id="list" class="w-full flex flex-col gap-1 h-fit text-primary select-none">
   <% channels.each do |channel| %>
     <!-- TODO: Use helper here -->
-    <%= link_to channel.name, channel, id: dom_id(channel), class: "px-3 py-1 rounded-md #{(channel.id == current_channel.id) ? "bg-primary text-primary-content" : "hover:bg-background"}" %>
+    <%= link_to channel, id: dom_id(channel), class: "px-3 py-1 rounded-md w-full #{(channel.id == current_channel.id) ? "bg-primary text-primary-content" : "hover:bg-background"}" do %>
+      <span class="flex gap-16 whitespace-nowrap">
+        <span>
+            <%= channel.name %>
+        </span>
+        <span class="ml-auto">
+            <%= notifications_count(current_user, channel) %>
+        </span>
+      </span>
+    <% end %>
   <% end %>
   <%= render partial: "channels/new_modal" %>
 </div>

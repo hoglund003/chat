@@ -38,4 +38,14 @@ RSpec.describe "Channels", type: :request do
       end
     end
   end
+
+  describe "GET /channels/:id" do
+    let(:message) { create(:message) }
+    it 'should clear notification' do
+      create(:unread_notification, message: message, user: user)
+      expect {
+        get channel_path(message.channel)
+      }.to change(UnreadNotification, :count)
+    end
+  end
 end
