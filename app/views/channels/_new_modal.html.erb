@@ -14,7 +14,7 @@
         <div class="flex flex-col gap-4">
           <%= f.label :name, t('name'), class: "text-xl" %>
           <%= f.text_field :name, class: "input input-bordered", placeholder: t('channel.placeholder'), autocomplete: "off" %>
-          <%= f.submit t('confirm') %>
+          <%= f.submit t('confirm'), class: "btn btn-primary w-fit self-end" %>
         </div>
       <% end %>
     </div>
