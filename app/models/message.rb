@@ -1,6 +1,7 @@
 class Message < ApplicationRecord
   belongs_to :user
   belongs_to :channel
+  has_many :unread_notifications
 
   validates :text, presence: true, allow_blank: false
 
