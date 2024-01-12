@@ -2,7 +2,7 @@
   <%= f.hidden_field :channel_id, value: channel.id %>
   <div class="w-full flex w-full gap-2">
     <%= f.text_field :text, class: "input w-full", placeholder: t('message.placeholder', channel_name: channel.name), data: { validation_target: "requiredField", action: "validation#checkDataIsValid" }  %>
-    <%= f.file_field :image, class: "file-input" %>
+    <%= f.file_field :image, class: "file-input", accept: ".jpg,.jpeg,.png" %>
     <%= f.button t('message.send'), type: "submit", class: "btn btn-secondary btn-disabled", data: { validation_target: "submit" } %>
   </div>
 <% end %>
