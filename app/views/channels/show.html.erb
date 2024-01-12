@@ -7,7 +7,7 @@
         <div class="h-full flex flex-col">
             <%= turbo_stream_from :messages %>
           <div class="h-96 overflow-scroll mb-3 flex flex-col-reverse">
-            <div id="messages">
+            <div id="channel_messages_<%= @channel.id %>">
               <%= render @messages %>
             </div>
             <div id="next_link">

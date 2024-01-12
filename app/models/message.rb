@@ -11,7 +11,7 @@ class Message < ApplicationRecord
   def broadcast_create
     broadcast_append_to(
       :messages,
-      target: "messages",
+      target: "channel_messages_#{channel.id}",
       partial: "messages/message",
       locals: { message: self, channel: self.channel }
     )
