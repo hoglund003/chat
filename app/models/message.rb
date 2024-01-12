@@ -2,8 +2,10 @@ class Message < ApplicationRecord
   belongs_to :user
   belongs_to :channel
   has_many :unread_notifications
+  has_one_attached :image
 
   validates :text, presence: true, allow_blank: false
+  validates :image, presence: false
 
   after_create_commit :broadcast_create
   def broadcast_create
