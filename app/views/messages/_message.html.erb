@@ -1,16 +1,25 @@
 <div
   id="<%= dom_id(message) %>"
-  class="flex flex-col py-2 border-t border-t-copy"
+  class="flex py-2 border-t border-t-copy"
 >
-  <div>
-    <span class="font-bold">
-      <%= message.user.nickname %>
-    </span>
-    <span class="text-xs">
-      <%= sent_at message %>
+  <div class="flex flex-col">
+    <div>
+      <span class="font-bold">
+        <%= message.user.nickname %>
+      </span>
+      <span class="text-xs">
+        <%= sent_at message %>
+      </span>
+    </div>
+    <span class="flex">
+      <%= message.text %>
     </span>
   </div>
-  <span>
-    <%= message.text %>
-  </span>
+  <% if message.image.attached? %>
+        <span class="ml-auto">
+          <%= link_to url_for(message.image), target: "_top" do %>
+            <%= image_tag(url_for(message.image), width: "50px") %>
+          <% end %>
+        </span>
+  <% end %>
 </div>
